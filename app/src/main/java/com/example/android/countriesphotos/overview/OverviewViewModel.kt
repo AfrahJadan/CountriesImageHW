@@ -21,6 +21,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.countriesphotos.network.CountriesApi
+import com.example.android.countriesphotos.network.ImageResponseModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -49,7 +50,7 @@ class OverviewViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val countriesResult = CountriesApi.retrofitService.getImages()
-                _status.value = "Success: ${countriesResult.size} Countries Image retrieved"
+                _status.value = "Success: ${countriesResult.data} Countries Image retrieved"
             } catch (e:Exception){
                 _status.value ="Failure: ${e.message}"
             }

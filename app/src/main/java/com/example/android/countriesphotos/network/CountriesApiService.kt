@@ -8,7 +8,7 @@ import retrofit2.create
 import retrofit2.http.GET
 import java.net.URI.create
 
-private const val BASE_URL = " https://countriesnow.space/api/v0.1/countries/flag/images"
+private const val BASE_URL = " https://countriesnow.space/"
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
@@ -18,8 +18,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CountriesApiService{
-    @GET("images")
-    suspend fun getImages():List<CountriesImage>
+    @GET("/api/v0.1/countries/flag/images")
+    suspend fun getImages():ImageResponseModel
 }
 
 object CountriesApi{
